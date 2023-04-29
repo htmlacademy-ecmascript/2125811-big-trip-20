@@ -2,11 +2,11 @@ import {createElement} from '../render.js';
 
 function createFilterTemplate() {
   return (
-    '<ul class="trip-events__list"></ul>'
+    '<li class="trip-events__item"></li>'
   );
 }
 
-export default class EventListView {
+export default class EventItemView {
   getTemplate() {
     return createFilterTemplate();
   }

@@ -42,7 +42,7 @@ function createFilterTemplate() {
   );
 }
 
-export default class FilterView {
+export default class PointView {
   getTemplate() {
     return createFilterTemplate();
   }
