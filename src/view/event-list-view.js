@@ -6,7 +6,7 @@ function createFilterTemplate() {
   );
 }
 
-export default class FilterView {
+export default class EventListView {
   getTemplate() {
     return createFilterTemplate();
   }

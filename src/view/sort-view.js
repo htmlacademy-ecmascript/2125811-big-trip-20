@@ -31,7 +31,7 @@ function createFilterTemplate() {
   );
 }
 
-export default class FilterView {
+export default class SortView {
   getTemplate() {
     return createFilterTemplate();
   }

@@ -167,7 +167,7 @@ function createFilterTemplate() {
   );
 }
 
-export default class FilterView {
+export default class PointEditView {
   getTemplate() {
     return createFilterTemplate();
   }
