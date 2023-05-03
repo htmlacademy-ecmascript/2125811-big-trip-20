@@ -1,5 +1,5 @@
 import { createElement } from '../render.js';
-import { toDay,toTime, duration } from '../utils.js';
+import { getRandomArrayElement, toDay,toTime, duration } from '../utils.js';
 
 function createPointTemplate(point) {
   const { type, destination, basePrice, dateFrom,
@@ -12,6 +12,8 @@ function createPointTemplate(point) {
   const endTime = toTime(dateTo);
   const durationTime = duration(dateFrom, dateTo);
   const eventTitle = `${type} ${destination.name}`;
+  const offerTitle = getRandomArrayElement(offers).title;
+  const offerPrice = getRandomArrayElement(offers).price;
 
   return (
     `<li class="trip-events__item">
@@ -35,9 +37,9 @@ function createPointTemplate(point) {
       <h4 class="visually-hidden">Offers:</h4>
       <ul class="event__selected-offers">
         <li class="event__offer">
-          <span class="event__offer-title">Order Uber</span>
+          <span class="event__offer-title">${offerTitle}</span>
           &plus;&euro;&nbsp;
-          <span class="event__offer-price">20</span>
+          <span class="event__offer-price">${offerPrice}</span>
         </li>
       </ul>
       <button class="event__favorite-btn ${isFavoriteClassName}" type="button">

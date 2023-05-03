@@ -71,12 +71,12 @@ const mockPoints = [
       {
         'type': 'taxi',
         'title': 'Upgrade to a business class',
-        'price': 145
+        'price': 175
       },
       {
         'type': 'bus',
         'title': 'Book a taxi at the arrival point',
-        'price': 55
+        'price': 75
       }
     ],
   }
