@@ -12,8 +12,8 @@ function createPointTemplate(point) {
   const endTime = toTime(dateTo);
   const durationTime = duration(dateFrom, dateTo);
   const eventTitle = `${type} ${destination.name}`;
-  const offerTitle = getRandomArrayElement(offers).title;
-  const offerPrice = getRandomArrayElement(offers).price;
+  const offerTitle = getRandomArrayElement(offers).offers[0].title;
+  const offerPrice = getRandomArrayElement(offers).offers[0].price;
 
   return (
     `<li class="trip-events__item">
