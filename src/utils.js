@@ -1,26 +1,48 @@
 import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
-const DAY_FORMAT = 'MMM DD';
-const TIME_FORMAT = 'HH:mm';
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
+const MSEC_IN_SEC = 1000;
+const SEC_IN_MIN = 60;
+const MIN_IN_HOUR = 60;
+const HOUR_IN_DAY = 24;
 
-function getRandomArrayElement(items) {
-  return items[Math.floor(Math.random() * items.length)];
+const MSEC_IN_HOUR = MIN_IN_HOUR * SEC_IN_MIN * MSEC_IN_SEC;
+const MSEC_IN_DAY = HOUR_IN_DAY * MSEC_IN_HOUR;
+
+function formatStringToDateTime(date) {
+  return dayjs(date).format('YYYY-MM-DDTHH:mm');
 }
 
-function toDay(dateTime) {
-  return dateTime ? dayjs(dateTime).format(DAY_FORMAT) : '';
+function formatStringToShotrDate(date) {
+  return dayjs(date).format('MMM DD');
 }
 
-function toTime(dateTime) {
-  return dateTime ? dayjs(dateTime).format(TIME_FORMAT) : '';
+function formatStringToTime(date) {
+  return dayjs(date).format('HH:mm');
 }
 
-function duration(start, end) {
-  const startDate = dayjs(start);
-  const endDate = dayjs(end);
-  return `${endDate.diff(startDate, 'hour')}H ${endDate.diff(startDate, 'minute') % 60}M`;
+function getPointDuration(dateFrom, dateTo) {
+  const timeDiff = dayjs(dateTo).diff(dayjs(dateFrom));
+
+  let pointDuration = 0;
+
+  switch (true) {
+    case (timeDiff >= MSEC_IN_DAY):
+      pointDuration = dayjs.duration(timeDiff).format('DD[D] HH[H] mm[M]');
+      break;
+    case (timeDiff >= MSEC_IN_HOUR):
+      pointDuration = dayjs.duration(timeDiff).format('HH[H] mm[M]');
+      break;
+    case (timeDiff < MSEC_IN_HOUR):
+      pointDuration = dayjs.duration(timeDiff).format('mm[M]');
+      break;
+  }
+
+  return pointDuration;
 }
 
 
-export { getRandomArrayElement, toDay, toTime, duration };
-
+export { formatStringToDateTime, formatStringToShotrDate, formatStringToTime, getPointDuration };
