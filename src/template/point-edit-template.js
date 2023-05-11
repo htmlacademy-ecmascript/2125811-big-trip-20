@@ -6,8 +6,6 @@ import { createOffersList } from './point-edit-offers.js';
 function createPointEditTemplate({ point, pointDestination, pointOffers }) {
   const { basePrice, dateFrom, dateTo, destination, offers, type } = point;
 
-  /* console.log(pointOffers)
-  console.log(offers) */
 
   return (/* html */
     `<form class="event event--edit" action="#" method="post">
@@ -108,7 +106,7 @@ function createPointEditTemplate({ point, pointDestination, pointOffers }) {
         <section class="event__section  event__section--offers">
           <h3 class="event__section-title  event__section-title--offers">Offers</h3>
           <div class="event__available-offers">
-          ${createOffersList(pointOffers, offers)}
+          ${createOffersList(pointOffers)}
           </div>
         </section>
 
