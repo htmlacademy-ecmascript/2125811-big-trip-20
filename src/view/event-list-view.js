@@ -1,6 +1,6 @@
 import {createElement} from '../render.js';
 
-function createFilterTemplate() {
+function createEventListTemplate() {
   return (
     '<ul class="trip-events__list"></ul>'
   );
@@ -8,7 +8,7 @@ function createFilterTemplate() {
 
 export default class EventListView {
   getTemplate() {
-    return createFilterTemplate();
+    return createEventListTemplate();
   }
 
   getElement() {
