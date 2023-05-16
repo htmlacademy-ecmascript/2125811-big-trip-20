@@ -1,8 +1,8 @@
-import {render} from '../render.js';
 import EventListView from '../view/event-list-view.js';
 import EventItemView from '../view/event-item-view.js';
 import PointEditView from '../view/point-edit-view.js';
 import PointView from '../view/point-view.js';
+import {render} from '../framework/render.js';
 
 export default class BoardPresenter {
   listComponent = new EventListView();
@@ -19,7 +19,7 @@ export default class BoardPresenter {
     this.boardPoints = [...this.pointsModel.get()];
 
     render(this.listComponent, this.boardContainer);
-    render(this.itemComponent, this.listComponent.getElement());
+    render(this.itemComponent, this.listComponent.element);
 
     render(
       new PointEditView({
@@ -27,7 +27,7 @@ export default class BoardPresenter {
         pointDestinations: this.destinationsModel.get(),
         pointOffers: this.offersModel.get()
       }),
-      this.listComponent.getElement()
+      this.listComponent.element
     );
 
     this.boardPoints.forEach((point) => {
@@ -37,7 +37,7 @@ export default class BoardPresenter {
           pointDestination: this.destinationsModel.getById(point.destination),
           pointOffers: this.offersModel.getByType(point.type)
         }),
-        this.listComponent.getElement()
+        this.listComponent.element
       );
     });
   }
