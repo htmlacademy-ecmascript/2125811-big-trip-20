@@ -1,6 +1,6 @@
 import EventListView from '../view/event-list-view.js';
 import EventItemView from '../view/event-item-view.js';
-import PointEditView from '../view/point-edit-view.js';
+//import PointEditView from '../view/point-edit-view.js';
 import PointView from '../view/point-view.js';
 import { render } from '../framework/render.js';
 
@@ -13,7 +13,7 @@ export default class BoardPresenter {
   #destinationsModel = null;
   #offersModel = null;
   #pointsModel = null;
-  #boardPoints = null;
+  #boardPoints = [];
 
 
   constructor({ boardContainer, destinationsModel, offersModel, pointsModel }) {
@@ -29,25 +29,22 @@ export default class BoardPresenter {
     render(this.#listComponent, this.#boardContainer);
     render(this.#itemComponent, this.#listComponent.element);
 
-    render(
-      new PointEditView({
-        point: this.#boardPoints[0],
-        pointDestinations: this.#destinationsModel.destinations,
-        pointOffers: this.#offersModel.offers
-      }),
-      this.#listComponent.element
-    );
-
     this.#boardPoints.forEach((point) => {
-      render(
-        new PointView({
-          point,
-          pointDestination: this.#destinationsModel.getById(point.destination),
-          pointOffers: this.#offersModel.getByType(point.type)
-        }),
-        this.#listComponent.element
-      );
+      this.#renderPoint(point);
     });
+
+
   }
+
+  #renderPoint(point) {
+    const pointComponent = new PointView({
+      point,
+      pointDestination: this.#destinationsModel.getById(point.destination),
+      pointOffers: this.#offersModel.getByType(point.type)
+    });
+
+    render(pointComponent, this.#listComponent.element);
+  }
+
 }
 
