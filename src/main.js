@@ -1,4 +1,3 @@
-import {render, RenderPosition} from './render.js';
 import TripInfoView from './view/trip-info-view.js';
 import FilterView from './view/fillters-view.js';
 import SortView from './view/sort-view.js';
@@ -7,6 +6,7 @@ import PointsModel from './model/points-model.js';
 import MockService from './service/mock-service.js';
 import DestinationsModel from './model/destination-model.js';
 import OffersModel from './model/offers-model.js';
+import {render, RenderPosition} from './framework/render.js';
 
 const tripMainElement = document.querySelector('.trip-main');
 const tripFilltersElement = document.querySelector('.trip-controls__filters');
