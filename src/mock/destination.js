@@ -12,11 +12,11 @@ function generateDestination() {
         description: getRandomArrayElement(DESCRIPTIONS)
       },
       {
-        src: `https://20.objects.pages.academy/static/destinations/${getRandomInteger(4, 7)}.jpg`,
+        src: `https://20.objects.pages.academy/static/destinations/${getRandomInteger(4, 6)}.jpg`,
         description: getRandomArrayElement(DESCRIPTIONS)
       },
       {
-        src: `https://20.objects.pages.academy/static/destinations/${getRandomInteger(6, 10)}.jpg`,
+        src: `https://20.objects.pages.academy/static/destinations/${getRandomInteger(7, 10)}.jpg`,
         description: getRandomArrayElement(DESCRIPTIONS)
       },
       {

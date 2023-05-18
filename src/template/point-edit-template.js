@@ -5,8 +5,9 @@ import { createDistinationsList } from './point-edit-distination-template.js';
 
 function createPointEditTemplate({ point, pointDestination, pointOffers }) {
   const { basePrice, dateFrom, dateTo, destination, type } = point;
-  return (/* html */
-    `<form class="event event--edit" action="#" method="post">
+  return (/* html */`
+  <div>
+    <form class="event event--edit" action="#" method="post">
       <header class="event__header">
         <div class="event__type-wrapper">
           <label class="event__type  event__type-btn" for="event-type-toggle-1">
@@ -110,7 +111,8 @@ function createPointEditTemplate({ point, pointDestination, pointOffers }) {
         ${createDistinationsList(pointDestination, { destination })}
 
       </section>
-    </form>`
+    </form>\
+  </div>`
   );
 }
 
