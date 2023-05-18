@@ -3,6 +3,7 @@ import EventItemView from '../view/event-item-view.js';
 import PointEditView from '../view/point-edit-view.js';
 import PointView from '../view/point-view.js';
 import { render, replace } from '../framework/render.js';
+import NoPointView from '../view/no-point-view.js';
 
 export default class BoardPresenter {
 
@@ -72,6 +73,12 @@ export default class BoardPresenter {
 
   #renderBoard() {
     render(this.#listComponent, this.#boardContainer);
+
+    if (this.#boardPoints.every((point) => point === null)) {
+      render(new NoPointView(), this.#listComponent.element);
+      return;
+    }
+
     render(this.#itemComponent, this.#listComponent.element);
 
     this.#boardPoints.forEach((point) => {
