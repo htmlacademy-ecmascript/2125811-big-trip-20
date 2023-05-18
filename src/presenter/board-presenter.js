@@ -26,13 +26,7 @@ export default class BoardPresenter {
   init() {
     this.#boardPoints = [...this.#pointsModel.points];
 
-    render(this.#listComponent, this.#boardContainer);
-    render(this.#itemComponent, this.#listComponent.element);
-
-    this.#boardPoints.forEach((point) => {
-      this.#renderPoint(point);
-    });
-
+    this.#renderBoard();
   }
 
   #renderPoint(point) {
@@ -76,5 +70,13 @@ export default class BoardPresenter {
     render(pointComponent, this.#listComponent.element);
   }
 
-}
+  #renderBoard() {
+    render(this.#listComponent, this.#boardContainer);
+    render(this.#itemComponent, this.#listComponent.element);
 
+    this.#boardPoints.forEach((point) => {
+      this.#renderPoint(point);
+    });
+  }
+
+}
