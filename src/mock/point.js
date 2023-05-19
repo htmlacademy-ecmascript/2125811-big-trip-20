@@ -1,4 +1,5 @@
-import { getRandomInteger, getDate } from './utils.js';
+import { getDate } from '../utils/point.js';
+import { getRandomInteger } from '../utils/common.js';
 
 function generatePoint(type, descriptionId, offersIds) {
   return {
@@ -6,8 +7,8 @@ function generatePoint(type, descriptionId, offersIds) {
     type,
     destination: descriptionId,
     basePrice: getRandomInteger(400, 1500),
-    dateFrom: getDate({next: false}),
-    dateTo: getDate({next: true}),
+    dateFrom: getDate({ next: false }),
+    dateTo: getDate({ next: true }),
     isFavorite: !!getRandomInteger(0, 1),
     offers: offersIds
   };

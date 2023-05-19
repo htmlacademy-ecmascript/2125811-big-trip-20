@@ -1,4 +1,4 @@
-import { CITIES } from '../mock/const.js';
+import { CITIES } from '../const.js';
 import dayjs from 'dayjs';
 import { createOffersList } from './point-edit-offers-template.js';
 import { createDistinationsList } from './point-edit-distination-template.js';
