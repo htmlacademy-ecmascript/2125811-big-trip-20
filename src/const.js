@@ -48,6 +48,13 @@ const TYPES = [
 
 const DUFULT_TYPE = 'flight';
 
+const FilterType = {
+  EVERYTHING: 'everything',
+  FUTURE: 'future',
+  PRESENT: 'present',
+  PAST: 'past'
+};
+
 
 export {
   POINT_EMPTY,
@@ -55,5 +62,6 @@ export {
   CITIES,
   Duration,
   TYPES,
-  DUFULT_TYPE
+  DUFULT_TYPE,
+  FilterType
 };

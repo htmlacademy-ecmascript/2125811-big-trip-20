@@ -75,6 +75,18 @@ function toTime(dateTime) {
   return dateTime ? dayjs(dateTime).format(TIME_FORMAT) : '';
 }
 
+function isPointFuture(point) {
+  return dayjs().isBefore(point.dateFrom);
+}
+
+function isPointPresent(point) {
+  return dayjs().isAfter(point.dateFrom) && dayjs().isBefore(point.dateTo);
+}
+
+function isPointPast(point) {
+  return dayjs().isAfter(point.dateTo);
+}
+
 export {
   formatStringToDateTime,
   formatStringToShotrDate,
@@ -82,5 +94,8 @@ export {
   getPointDuration,
   getDate,
   toDay,
-  toTime
+  toTime,
+  isPointFuture,
+  isPointPresent,
+  isPointPast
 };
