@@ -1,4 +1,4 @@
-function createFilterItem({ type, hasPoints }) {
+function createFilterItem({ type, hasPoints }, isChecked) {
   return (/* html */`
     <div class="trip-filters__filter" >
         <input
@@ -7,6 +7,7 @@ function createFilterItem({ type, hasPoints }) {
           type="radio"
           name="trip-filter"
           value="${type}"
+          ${isChecked === 0 ? 'checked' : ''}
           ${(hasPoints) ? '' : 'disable'}>
         <label
           class="trip-filters__filter-label"
