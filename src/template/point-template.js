@@ -3,7 +3,7 @@ import {
   formatStringToShotrDate,
   formatStringToTime,
   getPointDuration
-} from '../utils.js';
+} from '../utils/point.js';
 
 
 function createPointTemplate({ point, pointDestination, pointOffers }) {
