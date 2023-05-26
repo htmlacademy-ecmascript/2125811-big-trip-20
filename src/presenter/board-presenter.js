@@ -1,20 +1,21 @@
 import EventListView from '../view/event-list-view.js';
-import EventItemView from '../view/event-item-view.js';
 import PointEditView from '../view/point-edit-view.js';
 import PointView from '../view/point-view.js';
-import { render, replace } from '../framework/render.js';
+import { render, replace, RenderPosition } from '../framework/render.js';
 import NoPointView from '../view/no-point-view.js';
+import SortView from '../view/sort-view.js';
 
 export default class BoardPresenter {
 
   #listComponent = new EventListView();
-  #itemComponent = new EventItemView();
 
   #boardContainer = null;
   #destinationsModel = null;
   #offersModel = null;
   #pointsModel = null;
   #boardPoints = [];
+  #sortComponent = new SortView();
+  #noTaskComponent = new NoPointView();
 
 
   constructor({ boardContainer, destinationsModel, offersModel, pointsModel }) {
@@ -75,19 +76,30 @@ export default class BoardPresenter {
     render(pointComponent, this.#listComponent.element);
   }
 
+  #renderSort() {
+    render(this.#sortComponent, this.#boardContainer, RenderPosition.AFTERBEGIN);
+  }
+
+  #renderNoTasks() {
+    render(this.#noTaskComponent, this.#boardContainer, RenderPosition.AFTERBEGIN);
+  }
+
+  #renderPoints() {
+    this.#boardPoints.forEach((point) => {
+      this.#renderPoint(point);
+    });
+  }
+
   #renderBoard() {
     render(this.#listComponent, this.#boardContainer);
 
     if (this.#boardPoints.every((point) => point === null)) {
-      render(new NoPointView(), this.#listComponent.element);
+      this.#renderNoTasks();
       return;
     }
 
-    render(this.#itemComponent, this.#listComponent.element);
-
-    this.#boardPoints.forEach((point) => {
-      this.#renderPoint(point);
-    });
+    this.#renderSort();
+    this.#renderPoints();
   }
 
 }
