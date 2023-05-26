@@ -6,7 +6,7 @@ import { createDistinationsList } from './point-edit-distination-template.js';
 function createPointEditTemplate({ point, pointDestination, pointOffers }) {
   const { basePrice, dateFrom, dateTo, destination, type } = point;
   return (/* html */`
-  <div>
+  <li class="trip-events__item">
     <form class="event event--edit" action="#" method="post">
       <header class="event__header">
         <div class="event__type-wrapper">
@@ -115,7 +115,7 @@ function createPointEditTemplate({ point, pointDestination, pointOffers }) {
 
       </section>
     </form>\
-  </div>`
+    </li>`
   );
 }
 
