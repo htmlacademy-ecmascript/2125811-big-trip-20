@@ -1,14 +1,12 @@
 import EventListView from '../view/event-list-view.js';
-import PointEditView from '../view/point-edit-view.js';
-import PointView from '../view/point-view.js';
-import { render, replace, RenderPosition } from '../framework/render.js';
+import { render, RenderPosition } from '../framework/render.js';
 import NoPointView from '../view/no-point-view.js';
 import SortView from '../view/sort-view.js';
+import PointPresenter from './point-presenter.js';
 
 export default class BoardPresenter {
 
   #listComponent = new EventListView();
-
   #boardContainer = null;
   #destinationsModel = null;
   #offersModel = null;
@@ -33,47 +31,15 @@ export default class BoardPresenter {
 
   #renderPoint(point) {
 
-    const escKeyDownHandler = (evt) => {
-      if (evt.key === 'Escape') {
-        evt.preventDefault();
-        replaceFormToCard();
-        document.removeEventListener('keydown', escKeyDownHandler);
-      }
-    };
-
-    const pointComponent = new PointView({
-      point,
-      pointDestination: this.#destinationsModel.getById(point.destination),
-      pointOffers: this.#offersModel.getByType(point.type),
-      onEditClick: () => {
-        replaceCardToForm();
-        document.addEventListener('keydown', escKeyDownHandler);
-      }
+    const pointPresenter = new PointPresenter({
+      pointListContainer: this.#listComponent.element
     });
 
-    const pointEditComponent = new PointEditView({
+    pointPresenter.init({
       point,
-      pointDestinations: this.#destinationsModel.destinations,
-      pointOffers: this.#offersModel.offers,
-      onFormSubmit: () => {
-        replaceFormToCard();
-        document.removeEventListener('keydown', escKeyDownHandler);
-      },
-      onResetClick: () => {
-        replaceFormToCard();
-        document.removeEventListener('keydown', escKeyDownHandler);
-      }
+      destinationsModel: this.#destinationsModel,
+      offersModel: this.#offersModel
     });
-
-    function replaceCardToForm() {
-      replace(pointEditComponent, pointComponent);
-    }
-
-    function replaceFormToCard() {
-      replace(pointComponent, pointEditComponent);
-    }
-
-    render(pointComponent, this.#listComponent.element);
   }
 
   #renderSort() {
