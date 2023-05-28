@@ -1,33 +1,22 @@
 import { getRandomArrayElement, getRandomInteger } from '../utils/common.js';
 import { DESCRIPTIONS, CITIES } from '../const.js';
 
+const PICTURES_COUNT = 5;
+
+
+function generateDestinationPics() {
+  return {
+    src: `https://loremflickr.com/248/152?random=${getRandomInteger(1, 100)}.jpg`,
+    description: getRandomArrayElement(DESCRIPTIONS)
+  };
+}
+
 function generateDestination() {
   return {
     id: crypto.randomUUID(),
     description: getRandomArrayElement(DESCRIPTIONS),
     name: getRandomArrayElement(CITIES),
-    pictures: [
-      {
-        src: `https://20.objects.pages.academy/static/destinations/${getRandomInteger(1, 3)}.jpg`,
-        description: getRandomArrayElement(DESCRIPTIONS)
-      },
-      {
-        src: `https://20.objects.pages.academy/static/destinations/${getRandomInteger(4, 6)}.jpg`,
-        description: getRandomArrayElement(DESCRIPTIONS)
-      },
-      {
-        src: `https://20.objects.pages.academy/static/destinations/${getRandomInteger(7, 10)}.jpg`,
-        description: getRandomArrayElement(DESCRIPTIONS)
-      },
-      {
-        src: `https://20.objects.pages.academy/static/destinations/${getRandomInteger(11, 14)}.jpg`,
-        description: getRandomArrayElement(DESCRIPTIONS)
-      },
-      {
-        src: `https://20.objects.pages.academy/static/destinations/${getRandomInteger(15, 20)}.jpg`,
-        description: getRandomArrayElement(DESCRIPTIONS)
-      }
-    ]
+    pictures: Array.from({ length: PICTURES_COUNT }, generateDestinationPics)
   };
 
 }
