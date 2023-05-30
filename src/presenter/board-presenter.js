@@ -3,6 +3,7 @@ import { render, RenderPosition } from '../framework/render.js';
 import NoPointView from '../view/no-point-view.js';
 import SortView from '../view/sort-view.js';
 import PointPresenter from './point-presenter.js';
+import { updateItem } from '../utils/common.js';
 
 export default class BoardPresenter {
 
@@ -44,6 +45,12 @@ export default class BoardPresenter {
 
     this.#pointPresenters.set(point.id, pointPresenter);
   }
+
+  #handlePointChange = (updatedPoint) => {
+    this.#boardPoints = updateItem(this.#boardPoints, updatedPoint);
+    this.#pointPresenters.get(updatedPoint.id).init(updatedPoint);
+  };
+
 
   #clearPointList() {
     this.#pointPresenters.forEach((presenter) => presenter.destroy());
