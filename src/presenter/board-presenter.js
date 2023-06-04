@@ -34,14 +34,13 @@ export default class BoardPresenter {
   #renderPoint(point) {
 
     const pointPresenter = new PointPresenter({
-      pointListContainer: this.#listComponent.element
+      pointListContainer: this.#listComponent.element,
+      destinationsModel: this.#destinationsModel,
+      offersModel: this.#offersModel,
+      onDataChange: this.#handlePointChange
     });
 
-    pointPresenter.init({
-      point,
-      destinationsModel: this.#destinationsModel,
-      offersModel: this.#offersModel
-    });
+    pointPresenter.init(point);
 
     this.#pointPresenters.set(point.id, pointPresenter);
   }
@@ -62,7 +61,7 @@ export default class BoardPresenter {
     render(this.#sortComponent, this.#boardContainer, RenderPosition.AFTERBEGIN);
   }
 
-  #renderNoTasks() {
+  #renderNoPoints() {
     render(this.#noTaskComponent, this.#boardContainer, RenderPosition.AFTERBEGIN);
   }
 
@@ -76,7 +75,7 @@ export default class BoardPresenter {
     render(this.#listComponent, this.#boardContainer);
 
     if (this.#boardPoints.every((point) => point === null)) {
-      this.#renderNoTasks();
+      this.#renderNoPoints();
       return;
     }
 
