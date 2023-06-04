@@ -29,7 +29,7 @@ export default class MockService {
   }
 
   #generateDestinations() {
-    return Array.from({ length: 5 },
+    return Array.from({ length: 25 },
       () => generateDestination()
     );
   }
