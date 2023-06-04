@@ -55,6 +55,11 @@ const FilterType = {
   PAST: 'past'
 };
 
+const SortType = {
+  DEFAULT: 'default',
+  PRICE: 'price',
+  TIME: 'time',
+};
 
 export {
   POINT_EMPTY,
@@ -63,5 +68,6 @@ export {
   Duration,
   TYPES,
   DUFULT_TYPE,
-  FilterType
+  FilterType,
+  SortType
 };
