@@ -87,6 +87,21 @@ function isPointPast(point) {
   return dayjs().isAfter(point.dateTo);
 }
 
+function getPointsDateDifference(pointA, pointB) {
+  return new Date(pointA.dateFrom) - new Date(pointB.dateFrom);
+}
+
+function getPointsPriceDifference(pointA, pointB) {
+  return pointA.basePrice - pointB.basePrice;
+}
+
+function getPointsDurationDifference(pointA, pointB) {
+  const durationA = new Date(pointA.dateTo) - new Date(pointA.dateFrom);
+  const durationB = new Date(pointB.dateTo) - new Date(pointB.dateFrom);
+
+  return durationB - durationA;
+}
+
 export {
   formatStringToDateTime,
   formatStringToShotrDate,
@@ -97,5 +112,8 @@ export {
   toTime,
   isPointFuture,
   isPointPresent,
-  isPointPast
+  isPointPast,
+  getPointsDateDifference,
+  getPointsPriceDifference,
+  getPointsDurationDifference
 };
