@@ -56,9 +56,11 @@ const FilterType = {
 };
 
 const SortType = {
-  DEFAULT: 'default',
-  PRICE: 'price',
+  DAY: 'day',
+  EVENT: 'event',
   TIME: 'time',
+  PRICE: 'price',
+  OFFER: 'offer'
 };
 
 export {
