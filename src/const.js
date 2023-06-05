@@ -55,6 +55,13 @@ const FilterType = {
   PAST: 'past'
 };
 
+const SortType = {
+  DAY: 'day',
+  EVENT: 'event',
+  TIME: 'time',
+  PRICE: 'price',
+  OFFER: 'offer'
+};
 
 export {
   POINT_EMPTY,
@@ -63,5 +70,6 @@ export {
   Duration,
   TYPES,
   DUFULT_TYPE,
-  FilterType
+  FilterType,
+  SortType
 };
