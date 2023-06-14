@@ -1,7 +1,7 @@
 function createTyItem(types) {
   return types.map((type, index) => /* html */ `
     <div class="event__type-item">
-      <input id="event-type-${type}-1"
+      <input id="event-type-${type}-${index}"
       class="event__type-input  visually-hidden"
       type="radio" name="event-type" value="${type}">
       <label class="event__type-label  event__type-label--${type}"
