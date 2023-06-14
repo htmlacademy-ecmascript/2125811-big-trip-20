@@ -14,12 +14,13 @@ function createPointTemplate({ point, pointDestination, pointOffers }) {
 
   function createOfferTemplate() {
     return (
-      pointOffers.map((offer) => (`
-      <li class="event__offer">
+      pointOffers.map((offer) => (
+        point.offers.find((id) => id === offer.id) === offer.id ?
+          `<li class="event__offer">
         <span class="event__offer-title">${offer.title}</span>
         +€&nbsp;
         <span class="event__offer-price">${offer.price}</span>
-      </li>`
+      </li>` : ''
       )).join(' ')
     );
   }

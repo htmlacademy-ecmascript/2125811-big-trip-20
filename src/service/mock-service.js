@@ -37,7 +37,7 @@ export default class MockService {
   #generateOffers() {
     return TYPES.map((type) => ({
       type,
-      offers: Array.from({ length: getRandomInteger(0, 3) }, () => generateOffer(type))
+      offers: Array.from({ length: getRandomInteger(0, 5) }, () => generateOffer(type))
     }));
   }
 
