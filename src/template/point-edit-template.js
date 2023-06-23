@@ -4,7 +4,8 @@ import { createOffersList } from './point-edit-offers-template.js';
 import { createDistinationsList } from './point-edit-distination-template.js';
 import { createTypeList } from './point-edit-type-list.js';
 
-function createPointEditTemplate({ point, pointDestination, pointOffers }) {
+function createPointEditTemplate({ state, pointDestination, pointOffers }) {
+  const { point } = state;
   const { basePrice, dateFrom, dateTo, destination, type } = point;
   return (/* html */`
   <li class="trip-events__item">
